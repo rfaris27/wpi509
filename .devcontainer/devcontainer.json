@@ -1,0 +1,20 @@
+{
+  "name": "C++ MySQL Project wpi509",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspace",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "editor.formatOnSave": true,
+        "C_Cpp.default.cppStandard": "c++17"
+      },
+      "extensions": [
+        "ms-vscode.cpptools-extension-pack",
+        "editorconfig.editorconfig",
+        "cweijan.vscode-mysql-client2"
+      ]
+    }
+  },
+  "remoteUser": "vscode"
+}
