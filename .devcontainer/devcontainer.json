@@ -2,7 +2,7 @@
   "name": "C++ MySQL Project wpi509",
   "dockerComposeFile": "docker-compose.yml",
   "service": "app",
-  "workspaceFolder": "/workspace",
+  "workspaceFolder": "/workspaces"
   "customizations": {
     "vscode": {
       "settings": {
@@ -16,5 +16,6 @@
       ]
     }
   },
-  "remoteUser": "vscode"
+  "remoteUser": "vscode",
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y libmysqlcppconn-dev"
 }

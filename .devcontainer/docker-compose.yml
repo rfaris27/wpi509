@@ -7,18 +7,27 @@ services:
       dockerfile: .devcontainer/Dockerfile
     volumes:
       - ..:/workspaces:cached
-    # 1. Keep this for the "host.docker.internal" connection
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
-    # 2. Add these variables so your code knows where to look
     environment:
-      - DB_HOST=host.docker.internal
-      - DB_PORT=3333
+      - DB_HOST=db
+      - DB_PORT=3306
       - DB_USER=root
       - DB_PASS=p
       - DB_NAME=FlightData
-    cap_add:
-      - SYS_PTRACE
-    security_opt:
-      - seccomp:unconfined
+    depends_on:
+      - db
     command: /bin/sh -c "while sleep 1000; do :; done"
+
+  db:
+    image: mysql:8.0
+    container_name: wpi509-db
+    environment:
+      MYSQL_ROOT_PASSWORD: p
+      MYSQL_DATABASE: FlightData
+    ports:
+      - "3307:3306"
+    volumes:
+      - db-data:/var/lib/mysql
+
+volumes:
+  db-data:
+  

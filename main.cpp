@@ -3,10 +3,11 @@
 #include <cppconn/driver.h>
 #include <cppconn/resultset.h>
 #include <cppconn/statement.h>
-#include <cppconn/exception.h>
-#include <cppconn/resultset_metadata.h> // Required for getMetaData
+#include <cppconn/exception.h> 
 #include <iostream>
 #include <string>
+
+
 
 int main()
 {
@@ -17,10 +18,11 @@ int main()
 
         driver = sql::mysql::get_mysql_driver_instance();
 
-        // Using your specific host, port 3333, and password 'p'
-        con = driver->connect("tcp://host.docker.internal:3333", "root", "p");
-        con->setSchema("dev_db");
-
+        // Use 127.0.0.1 for the most stable connection to your local machine
+        // Change this:
+// Use the name 'wpi509-db' and the internal port '3306'
+con = driver->connect("tcp://wpi509-db:3306", "root", "p");
+con->setSchema("FlightData");
         sql::Statement *stmt = con->createStatement();
         sql::ResultSet *res;
         sql::ResultSetMetaData *res_meta;
